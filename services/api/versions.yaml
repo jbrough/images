@@ -1,3 +1,6 @@
+square:
+  x: 48
+  y: 48
 thumb:
   x: 40
   y: 64
@@ -13,3 +16,6 @@ large:
 xlarge:
   x: 1280
   y: 2048
+di_detailed:
+  x: 370
+  y: 592
