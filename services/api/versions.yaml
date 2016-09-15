@@ -7,7 +7,7 @@ thumb:
 small:
   x: 80
   y: 128
-medium:
+photo:
   x: 275
   y: 440
 large:
@@ -16,6 +16,6 @@ large:
 xlarge:
   x: 1280
   y: 2048
-di_detailed:
+editor:
   x: 370
   y: 592
