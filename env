@@ -1,0 +1,7 @@
+export SF_API_PORT=9293
+export SF_RESIZER_PORT=9294
+export SF_STORAGE_PORT=9295
+export SF_QUEUE_PORT=9296
+export SF_QUEUE_MAX_RETRIES=10
+export SF_GOOGLE_PROJECT_ID=silkfred-1
+export SF_GCS_BUCKET=silkfred

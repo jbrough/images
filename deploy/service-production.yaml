@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: images-production
+spec:
+  selector:
+    app: images-production
+  type: LoadBalancer
+  externalIPs:
+  ports:
+  - port: 3000
+    targetPort: 9292
+    name: main-port
+    protocol: TCP

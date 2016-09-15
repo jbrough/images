@@ -1,0 +1,21 @@
+{
+  "name": "images",
+  "version": "1.0.0",
+  "description": "The vips package is required.",
+  "main": "start_dev.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tape test/test.js"
+  },
+  "author": "Jamie Brough <jamie1612@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "async": "^2.0.1",
+    "ava": "^0.16.0",
+    "redis": "^2.6.2",
+    "request": "^2.74.0",
+    "sharp": "^0.16.0"
+  }
+}

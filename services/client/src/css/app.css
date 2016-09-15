@@ -1,0 +1,69 @@
+body {
+  background: #fefefe;
+  font-size: 8pt;
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+li {
+  position: relative;
+  float: left;
+  margin: 10px 30px 10px 10px;
+}
+
+li img {
+  padding: 5px;
+  border: solid #aaa 1px;
+}
+
+li span.dimensions {
+  padding: 2px 5px;
+  opacity: 0.8;
+  background: #fff;
+  size: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+ul, ol {
+  clear: both;
+}
+
+ul {
+  list-style: none;
+}
+
+.ctrls {
+  padding: 10px 50px;
+  height: 20px;
+  background: #eee;
+}
+
+.ctrls form {
+  float: left;
+}
+
+.ctrls .delete {
+  float: right;
+}
+
+.button {
+  float: right;
+  margin: 0 5px;
+}
+
+#crop {
+  position: absolute;
+  top: 55px;
+  left: 8px;
+  background: #fff;
+  width: 1440px;
+  height: 556px;
+  overflow: hidden;
+}
+
+#saveCrop {
+  position: absolute;
+  top: 20px;
+  left:20px;
+}

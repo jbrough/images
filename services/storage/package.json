@@ -1,0 +1,27 @@
+{
+  "name": "storage",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node ./server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbrough/sf-storage.git"
+  },
+  "author": "Jamie Brough <jamie1612@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbrough/sf-storage/issues"
+  },
+  "homepage": "https://github.com/jbrough/sf-storage#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "google-cloud": "^0.38.3",
+    "morgan": "^1.7.0"
+  }
+}

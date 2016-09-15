@@ -1,0 +1,84 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: images-{deploymentEnv}
+spec:
+  replicas: {replicas}
+  template:
+    metadata:
+      labels:
+        app: images-{deploymentEnv}
+    spec:
+      containers:
+      - name: images-api
+        image: {gcr}/images-api:{version}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9292
+        env:
+          - name: NODE_ENV
+            value: {deploymentEnv}
+          - name: SF_API_PORT
+            value: "9292"
+          - name: SF_RESIZER_PORT
+            value: "9293"
+          - name: SF_STORAGE_PORT
+            value: "9294"
+          - name: SF_QUEUE_PORT
+            value: "9295"
+          - name: SF_VERSION
+            value: "{version}"
+          - name: SF_GCS_BUCKET
+            value: {gcsBucket}
+          - name: REDIS_HOST
+            value: {redisHost}
+      - name: images-resizer
+        image: {gcr}/images-resizer:{version}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9293
+        env:
+          - name: SF_RESIZER_PORT
+            value: "9293"
+          - name: NODE_ENV
+            value: {deploymentEnv}
+      - name: images-storage
+        image: {gcr}/images-storage:{version}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9294
+        env:
+          - name: SF_STORAGE_PORT
+            value: "9294"
+          - name: NODE_ENV
+            value: staging
+          - name: SF_GOOGLE_PROJECT_ID
+            value: {googleProjectId}
+          - name: SF_GCS_BUCKET
+            value: {gcsBucket}
+      - name: images-queue
+        image: {gcr}/images-queue:{version}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9295
+        env:
+          - name: SF_QUEUE_PORT
+            value: "9295"
+          - name: NODE_ENV
+            value: {deploymentEnv}
+          - name: REDIS_HOST
+            value: {redisHost}
+          - name: SF_QUEUE_MAX_RETRIES
+            value: "{queueMaxRetries}"
+      - name: images-task
+        image: {gcr}/images-task:{version}
+        imagePullPolicy: Always
+        env:
+          - name: SF_QUEUE_PORT
+            value: "9295"
+          - name: SF_API_PORT
+            value: "9292"
+          - name: NODE_ENV
+            value: {deploymentEnv}
+          - name: REDIS_HOST
+            value: {redisHost}

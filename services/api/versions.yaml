@@ -1,0 +1,15 @@
+thumb:
+  x: 40
+  y: 64
+small:
+  x: 80
+  y: 128
+medium:
+  x: 275
+  y: 440
+large:
+  x: 640
+  y: 1024
+xlarge:
+  x: 1280
+  y: 2048

@@ -1,0 +1,36 @@
+{
+  "name": "images",
+  "description": "images",
+  "version": "1.2.0",
+  "private": true,
+  "scripts": {
+    "test": "tape -r babel-register test/**/*.jsx",
+    "dev": "webpack -d",
+    "publish": "webpack -p",
+    "start": "webpack-dev-server"
+  },
+  "engines": {
+    "node": "6.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "browserify": "^8.1.3",
+    "css-loader": "^0.24.0",
+    "lodash": "^4.13.1",
+    "query-string": "^4.2.2",
+    "react": "^15.3.1",
+    "react-addons-test-utils": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "skin-deep": "^0.16.0",
+    "style-loader": "^0.13.1",
+    "supertest": "^1.2.0",
+    "tape": "^4.6.0",
+    "uglify-js": "^2.7.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.0"
+  }
+}

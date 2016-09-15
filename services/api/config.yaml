@@ -1,0 +1,16 @@
+test:
+  google:
+    bucket_id: 'silkfred'
+    project_id: 'silkfred-1'
+development:
+  google:
+    bucket_id: 'silkfred'
+    project_id: 'silkfred-1'
+staging:
+  google:
+    bucket_id: 'silkfred'
+    project_id: 'silkfred-1'
+production:
+  google:
+    bucket_id: 'silkfred'
+    project_id: 'silkfred-1'
