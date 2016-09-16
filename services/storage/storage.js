@@ -1,8 +1,17 @@
+const fs = require('fs');
+const streamBuffers = require('stream-buffers');
+
 module.exports = (apis) => {
-  const bucket = process.env.SF_GCS_BUCKET;
+  //const bucket = process.env.SF_GCS_BUCKET;
+  const bucket = 'test-images';
+
+  const client = apis.pkgcloud;
+
+  function getFile(name, cb) {
+    apis.pkgcloud.getFile(bucket, name, cb)
+  }
 
   return (name)  => {
-    const file = apis.gcs.bucket(bucket).file(name);
 
     return {
       metadata: (cb) => {
@@ -10,6 +19,17 @@ module.exports = (apis) => {
       },
 
       store: (data, headers, cb) => {
+        const size = Buffer.byteLength(data.toString());
+
+        const opts = {
+          container: bucket,
+          remote: name,
+          contentType: headers['content-type'],
+          size,
+        };
+
+        console.log(opts);
+
         const metadata = {
           contentType: headers['content-type'],
           cacheControl: headers['cache-control'],
@@ -24,20 +44,25 @@ module.exports = (apis) => {
           }
         }
 
-        const writer = file.createWriteStream(
-          { metadata: metadata }
+        const reader = new streamBuffers.ReadableStreamBuffer({
+          frequency: 10,
+          chunkSize: 2048,
+        });
+
+        reader.put(data);
+
+        const writer = client.upload(
+          opts
         )
-          .on('error', (err) => {
-            return cb(err);
-          })
-          .on('finish', () => {
-            file.makePublic((err, res) => {
-              const location = `https://storage.googleapis.com/${bucket}/${name}`;
-              return cb(err, location);
-            });
-          });
-        writer.write(data);
-        writer.end();
+        writer
+        .on('error', (err) => {
+          return cb(err);
+        })
+        .on('success', (file) => {
+          return cb(null, file);
+        });
+
+        reader.pipe(writer);
       },
 
       download: (cb) => {
